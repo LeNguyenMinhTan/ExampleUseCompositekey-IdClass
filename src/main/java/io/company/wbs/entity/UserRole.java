@@ -1,5 +1,6 @@
 package io.company.wbs.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -42,10 +43,12 @@ public class UserRole {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID", nullable = false, insertable = false, updatable = false)
     //@JsonIgnoreProperties(value = {"applications", "hibernateLazyInitializer"})
+    @JsonBackReference
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ROLE_ID", nullable = false, insertable = false, updatable = false)
     //@JsonIgnoreProperties(value = {"applications", "hibernateLazyInitializer"})
+    @JsonBackReference
     private Role role;
 }

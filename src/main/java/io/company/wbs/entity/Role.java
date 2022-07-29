@@ -1,5 +1,6 @@
 package io.company.wbs.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -34,6 +35,7 @@ public class Role {
     @Column(name = "MODIFIED_BY")
     private Long modifiedBy;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL , mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL , mappedBy = "role")
+    @JsonManagedReference
     private Collection<UserRole> roles = new ArrayList<>();
 }

@@ -1,5 +1,6 @@
 package io.company.wbs.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -49,7 +50,8 @@ public class User {
 //    @ManyToMany(fetch = FetchType.EAGER)
 //    private Collection<Role> roles = new ArrayList<>();
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL , mappedBy = "role")
+    @OneToMany( cascade = CascadeType.ALL , mappedBy = "user")
+    @JsonManagedReference
     private Collection<UserRole> roles = new ArrayList<>();
 
     @Column(name = "CREATED_DATE")
